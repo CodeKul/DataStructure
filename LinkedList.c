@@ -100,9 +100,57 @@ void display(struct LinkedList *q) {
     printf("\n");
 }
 
+int getSumOfData(struct LinkedList *q)
+{
+    int add=0;
+    while(q != NULL)
+    {
+        add=add+(q->data);
+        q=q->next;
+    }
+    return add;
+}
+
+void delLast(struct LinkedList **q)
+{
+    struct LinkedList *temp, *newLastNode;
+    temp=*q;
+    
+    while(1)
+    {
+        if (temp->next == NULL) {
+            break;
+        }
+        newLastNode = temp;
+        temp=temp->next;
+    }
+    newLastNode->next = NULL;
+    free(temp);
+    
+    return;
+}
+
+void deleteLast(struct LinkedList **q,int index)
+{
+    int count=getCount(*q);
+    if(index == count)
+    {
+        delLast(q);
+    }
+    else{
+        while(i<=count)
+        {
+            
+        }
+        
+    }
+    
+}
+
 int main() {
     
     struct LinkedList *start;
+    int ad;
     start = NULL;
     
     addAtEnd(&start,20);
@@ -122,6 +170,17 @@ int main() {
     addAtIndex(&start,4,50);
     
     display(start);
+    
+    ad=getSumOfData(start);
+    
+    printf("the sum of the data is %d\n",ad);
+    
+    delLast(&start);
+
+    display(start);
+    
+    ad=getSumOfData(start);
+    printf("the sum of the data is %d\n",ad);
 
     return 0;
     

@@ -1,6 +1,6 @@
 //
 //  LinkedList.c
-//  
+//
 //
 //  Created by Varun on 15/01/17.
 //
@@ -130,21 +130,102 @@ void delLast(struct LinkedList **q)
     return;
 }
 
-void deleteLast(struct LinkedList **q,int index)
+void delAtIndex(struct LinkedList **q,int index)
 {
-    int count=getCount(*q);
-    if(index == count)
-    {
-        delLast(q);
-    }
-    else{
-        while(i<=count)
-        {
-            
-        }
-        
-    }
+    int count,i=0;
+    struct LinkedList *temp,*NewNextNode;
+    count=getCount(*q);
+    temp=*q;
     
+    if(index>=count)
+    {
+         printf("not enough nodes in the linkedlist\n");
+         return;
+    }	
+    if(count==1)
+    {
+        *q=NULL;
+    }
+    else
+    {
+        while(1)
+        {
+            if (i==index) {
+                break;
+            }
+            NewNextNode = temp;
+            temp=temp->next;
+            i++;
+        }
+    }
+    NewNextNode->next = temp->next;
+    free(temp);
+    
+    return;
+}
+
+void reverse(struct LinkedList **x)
+{
+    struct LinkedList *q,*r,*s;
+    q=*x;
+    r=NULL;
+    
+    while(q!=NULL)
+    {
+        s=r;
+        r=q;
+        q=q->next;
+        r->next=s;
+    }
+    *x=r;
+}
+
+void selectionSort(struct LinkedList *q)
+{
+    struct LinkedList *list1, *list2;
+    int i,j,k,temp,n = getCount(q);
+    list1 = q;
+    
+    for (i = 0; i < n-1;i++) {
+        list2 = list1->next;
+        for (j = i + 1; j < n ; j++) {
+            if (list1->data > list2->data) {
+                
+                temp = list1->data;
+                list1->data = list2->data;
+                list2->data = temp;
+            }
+            list2 = list2->next;
+        }
+        list1 = list1->next;
+    }
+    return;
+}
+
+void bubbleSort(struct LinkedList *q)
+{
+    struct LinkedList *list1,*list2;
+    int i,j,k,temp,n=getCount(q);
+
+    k=n;
+    for(i=0;i < n-1;i++,k--)
+    {
+        list1 = q;
+        list2=list1->next;
+        
+        for(j=1;j<k;j++)
+        {
+            if(list1->data>list2->data)
+            {
+                temp=list1->data;
+                list1->data=list2->data;
+                list2->data=temp;
+            }
+            list1=list1->next;
+            list2=list2->next;
+        }
+    }
+    return;
 }
 
 int main() {
@@ -153,34 +234,51 @@ int main() {
     int ad;
     start = NULL;
     
-    addAtEnd(&start,20);
+    addAtEnd(&start,59);
 
-    addAtEnd(&start,30);
+    addAtEnd(&start,23);
 
-    addAtEnd(&start,40);
+    addAtEnd(&start,47);
     
-    addAtBeg(&start,10);
+    addAtBeg(&start,11);
 
+    //display(start);
+    
+    addAtEnd(&start,89);
+    
+    addAtEnd(&start,45);
+    
+    addAtIndex(&start,4,90);
+    
+    //display(start);
+    
+    //ad=getSumOfData(start);
+    
+    //printf("the sum of the data is %d\n",ad);
+    
+    //delLast(&start);
+
+    //display(start);
+    
+    //ad=getSumOfData(start);
+    //printf("the sum of the data is %d\n",ad);
+    
+    //delAtIndex(&start,3);
+    
+    //display(start);
+    
+    //reverse(&start);
+    
     display(start);
     
-    addAtEnd(&start,60);
-    
-    addAtEnd(&start,70);
-    
-    addAtIndex(&start,4,50);
-    
-    display(start);
-    
-    ad=getSumOfData(start);
-    
-    printf("the sum of the data is %d\n",ad);
-    
-    delLast(&start);
+    //selectionSort(start);
 
-    display(start);
+    //display(start);
     
-    ad=getSumOfData(start);
-    printf("the sum of the data is %d\n",ad);
+    bubbleSort(start);
+    
+    display(start);
+
 
     return 0;
     

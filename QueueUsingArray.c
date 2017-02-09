@@ -23,7 +23,7 @@ void initQueue(struct queue *s)
     s->rear=0;
 }
 
-void addAtEnd(struct queue *s,int d)
+void addToQueue(struct queue *s,int d)
 {
     if(s->rear==4)
     {
@@ -34,7 +34,7 @@ void addAtEnd(struct queue *s,int d)
     (s->rear)++;
 }
 
-void removeAtBegin(struct queue *s)
+void removeFromQueue(struct queue *s)
 {
     if(s->rear==0)
     {
@@ -66,14 +66,17 @@ int main()
     
     initQueue(&q);
     
-    addAtEnd(&q,23);
-    addAtEnd(&q,67);
-    addAtEnd(&q,45);
+    addToQueue(&q,23);
+    display(&q);
+    addToQueue(&q,67);
+    display(&q);
+    addToQueue(&q,45);
     
-    //display(&q);
+    display(&q);
     
-    removeAtBegin(&q);
-    removeAtBegin(&q);
+    removeFromQueue(&q);
+    display(&q);
+    removeFromQueue(&q);
     
     display(&q);
     

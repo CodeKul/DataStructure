@@ -202,6 +202,23 @@ void selectionSort(struct LinkedList *q)
     return;
 }
 
+void selectionSortCounter() {
+    
+    int i = 0, j = 0, n = 5, count = 0;
+    
+    for (i = 0; i < n-1;i++) {
+
+//        count = 0;
+        for (j = i + 1; j < n ; j++) {
+            count ++;
+            if (j == n - 1) {
+//                printf("Count: %d\n",count);
+            }
+        }
+    }
+    printf("Count: %d\n",count);
+}
+
 void bubbleSort(struct LinkedList *q)
 {
     struct LinkedList *list1,*list2;
@@ -269,17 +286,18 @@ int main() {
     
     //reverse(&start);
     
-    display(start);
+//    display(start);
     
     //selectionSort(start);
 
     //display(start);
     
-    bubbleSort(start);
+//    bubbleSort(start);
     
-    display(start);
+//    display(start);
 
 
+    selectionSortCounter();
     return 0;
     
 }

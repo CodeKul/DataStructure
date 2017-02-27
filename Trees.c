@@ -45,7 +45,7 @@ void search(struct treeNode **q1,struct treeNode **x1,struct treeNode **parent,i
 {
     struct treeNode *q2;
     q2=*q1;
-    *found=FALSE;
+    *found = FALSE;
     *parent=NULL;
     
     while(q2 != NULL)
@@ -77,6 +77,7 @@ void delete(struct treeNode **q,int num)
     if(*q == NULL)
     {
         printf("the tree is empty\n");
+        return;
     }
     
     parent=x=NULL;
@@ -90,6 +91,7 @@ void delete(struct treeNode **q,int num)
     }
     
     if (parent == NULL) {
+        
         if(x->left != NULL && x->right != NULL)
         {
             parent=x;
@@ -233,9 +235,9 @@ int main()
     
     tn=NULL;
     
-    int arr[]={40,20,10,30};
+    int arr[]={40,20,10,30,60,50,45};
     
-    for(i=0;i<4;i++)
+    for(i=0;i<7;i++)
     {
         insert(&tn,arr[i]);
     }
@@ -244,13 +246,13 @@ int main()
     inorder(tn);
     printf("\n");
 
-    //printf("preorder\n");
-    //preorder(tn);
-    //printf("\n");
+    printf("preorder\n");
+    preorder(tn);
+    printf("\n");
     
-    //printf("postorder\n");
-    //postorder(tn);
-    //printf("\n");
+    printf("postorder\n");
+    postorder(tn);
+    printf("\n");
     
 //    delete(&tn,10);
 //    delete(&tn,30);
@@ -263,11 +265,11 @@ int main()
 //    inorder(tn);
     
     
-    delete(&tn,40);
-
-    inorder(tn);
-    printf("\n");
-    preorder(tn);
-    printf("\n");
+//    delete(&tn,40);
+//
+//    inorder(tn);
+//    printf("\n");
+//    preorder(tn);
+//    printf("\n");
 
 }

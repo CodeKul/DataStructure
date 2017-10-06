@@ -16,9 +16,9 @@ int midpoint=-1,startpoint=0,endpoint=MAX-1;
 int BinarySearch(int data)
 {
     int index=-1;
-    midpoint=(startpoint+(endpoint-startpoint))/2;
     while(startpoint<=endpoint)
     {
+        midpoint=(startpoint + endpoint)/2;
         if(arr[midpoint]==data)
         {
             index=midpoint;
